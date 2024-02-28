@@ -1,12 +1,26 @@
-﻿Console.WriteLine("Ingrese el numero del cual desea saber su tabla de multiplicar");
-if (!int.TryParse(Console.ReadLine(), out int numero))
-{
-    Console.WriteLine("Ups! no ingresaste un numero valido");
-    return;
-}
-Console.WriteLine($"Esta es la tabla de multiplicar del numero {numero}:");
+﻿int secreto = 26;
+int numero;
 
-for (int i = 1; i <= 10; i++)
+do
 {
-    Console.WriteLine($"{numero} x {i} = {numero * i}");
-}
+    Console.WriteLine("Ingresa un numero");
+    if (!int.TryParse(Console.ReadLine(), out numero))
+    {
+        Console.WriteLine("Introduce un numero valido por favor");
+        continue;
+    }
+
+    if (numero < secreto)
+    {
+        Console.WriteLine("El numero secreto es mayor");
+    }
+    else if (numero > secreto)
+    {
+        Console.WriteLine("El numero secreto es menor");
+    }
+    else
+    {
+        Console.WriteLine("WOW! Adivinaste el numero secreto");
+    }
+} while (numero != secreto);
+Console.WriteLine("FIN");
