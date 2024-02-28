@@ -1,42 +1,40 @@
-﻿while (true)
+﻿int num1, num2, operador, suma, resta, multiplicacion, division;
+
+try
 {
-    Console.WriteLine("Ingresa un numero entero positivo por favor"); //numero con el que vamos a operar
-    if (!int.TryParse(Console.ReadLine(), out int num) || num <= 0)
+    Console.WriteLine("Ingresa un numero entero por favor");
+    num1 = int.Parse(Console.ReadLine());
+    Console.WriteLine("Ingresa un numero entero de nuevo por favor");
+    num2 = int.Parse(Console.ReadLine());
+    Console.WriteLine("Elige el operador que deseas utilizar");
+    Console.WriteLine(" 1. Suma +");
+    Console.WriteLine(" 2. Resta -");
+    Console.WriteLine(" 3. Multiplicacion *");
+    Console.WriteLine(" 4. Division /");
+    operador = int.Parse(Console.ReadLine());
+
+    suma = num1 + num2;
+    resta = num1 - num2;
+    multiplicacion = num1 * num2;
+    division = num1 / num2;
+
+    switch (operador)
     {
-        Console.WriteLine("Ingresa un numero entero positivo"); //numero que nos indicara que desea hacer
-        continue;
-    }
-    Console.WriteLine("Bienvenido a un peque menu: ");
-    Console.WriteLine("Que deseas hacer?");
-    Console.WriteLine(" 1) Calcular el factorial del numero ingresado");
-    Console.WriteLine(" 2) Calcular la raiz cuadrada del numero ingresado");
-    Console.WriteLine(" 3) Salir del programa");
-    if (!int.TryParse(Console.ReadLine(), out int opcion))  
-    {
-        Console.WriteLine("Por favor ingrese un numero entero como opcion :)");
-        continue;
-    }
-    switch (opcion)
-    {
-        case 1: Console.WriteLine($"El factorial de {num} es: {numfactorial(num)}"); 
+        case 1:
+            Console.WriteLine("El resultado de la suma de los dos numeros enteros es: " + suma);
             break;
-        case 2: Console.WriteLine($"La raiz cuadra de {num} es: {Math.Sqrt(num)}");
+        case 2:
+            Console.WriteLine("El resultado de la resta de los dos numeros enteros es:" + resta);
             break;
-        case 3: Console.WriteLine("Fue un gusto verte, hasta pronto <3");
-            return;
-        default: Console.WriteLine("Ups! te equivaste, la opcion no es valida.");
+        case 3:
+            Console.WriteLine("El resultado de la multiplicacion de los dos numertos enteros es: " + multiplicacion);
+            break;
+        case 4:
+            Console.WriteLine("El resultado de la divison de lo dos numeros enteros es: " + division);
             break;
     }
 }
-
-static int numfactorial(int num)
+catch (Exception ex)
 {
-    if (num == 0 || num ==1)
-    {
-        return 1; 
-    }
-    else
-    {
-        return num * numfactorial(num - 1);
-    }
+    Console.WriteLine("No ingresaste lo que se te solicito :(" + ex.Message);
 }
